@@ -1,10 +1,16 @@
-import express from "exppress";
+import express from "express";
 import db from "./db/db";
+import bodyParser from "body-parser";
 
-//sets up the express app
+// Set up the express app
 const app = express();
 
-//get all todos
+const app = express();
+// Parse incoming requests data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// get all todos
 app.get("/api/v1/todos", (req, res) => {
   res.status(200).send({
     success: "true",
@@ -12,9 +18,8 @@ app.get("/api/v1/todos", (req, res) => {
     todos: db,
   });
 });
-
 const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log("server running on port ${PORT}");
+  console.log(`server running on port ${PORT}`);
 });
