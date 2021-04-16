@@ -4,6 +4,8 @@ import db from "./db/db";
 //This is the middleware, in express they typically use the word next to define what happens beyond the req and res object
 import router from "./routes/index.js";
 
+import todoController from "../todosControllers/todos";
+
 import bodyParser from "body-parser";
 
 // Set up the express app
