@@ -1,13 +1,17 @@
 import express from "express";
 import db from "./db/db";
+
+//This is the middleware, in express they typically use the word next to define what happens beyond the req and res object
+import router from "./routes/index.js";
+
 import bodyParser from "body-parser";
 
 // Set up the express app
 const app = express();
 
-// Parse incoming requests data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// Parses incoming requests data
+app.use(urlencoded({ extended: false }));
+app.use(router); //lets you use the middleware
 
 // get all todos
 app.get("/api/v1/todos", (req, res) => {
